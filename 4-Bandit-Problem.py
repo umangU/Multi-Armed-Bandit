@@ -1,41 +1,41 @@
-# importing relevant libraries
+# Importing relevant libraries
 import numpy as np
 import matplotlib.pyplot as mpy
 import random
 
-# declaring total number of bandit problems
+# Declaring total number of bandit problems
 banditProblems=2000
-# declaring total number of arms in each bandit problem
+# Declaring total number of arms in each bandit problem
 k=4
-# declaring total number of times to pull each arm
+# Declaring total number of times to pull each arm
 armPulls=1000
 
-# storing the true means generated for each arms for all the bandits
+# Storing the true means generated for each arms for all the bandits
 trueMeans=np.random.normal(0,1,(banditProblems,k))
-# storing the true optimal arms in each bandit
+# Storing the true optimal arms in each bandit
 trueOptimal=np.argmax(trueMeans,1)
 
-# storing the array of values for epsilon
+# Storing the array of values for epsilon
 epsilon=[0,0.1]
 col=['r','g']
 
-# adding subplots to plot and compare both plots simultaneously
+# Adding subplots to plot and compare both plots simultaneously
 plotFirst=mpy.figure().add_subplot(111)
 plotSecond=mpy.figure().add_subplot(111)
 
-# looping through all the values of epsilon
+# Looping through all the values of epsilon
 for x in range(len(epsilon)) :
-
+	
 	print('The present epsilon value is : ',x)
 
 	# Storing the predicted reward
 	Q=np.zeros((banditProblems,k))
-	# total number of times each arms is pulled
+	# Total number of times each arms is pulled
 	N=np.ones((banditProblems,k))
-	# assigning the initial random arm pulls
+	# Assigning the initial random arm pulls
 	initialArm=np.random.normal(trueMeans,1)
 
-	# declaring the variables to store rewards
+	# Declaring the variables to store rewards
 	rewardEps=[]
 	rewardEps.append(0)
 	rewardEps.append(np.mean(initialArm))
