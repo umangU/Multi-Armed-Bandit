@@ -58,7 +58,8 @@ for x in range(len(epsilon)) :
 			# Condition to calculate percentage optimal action
 			if i==trueOptimal[z] :
 				optimalPull=optimalPull+1
-
+			
+			# Gettign rewards
 			rewardTemp=np.random.normal(trueMeans[z][i],1)
 			rewardPull.append(rewardTemp)
 			N[z][i]=N[z][i]+1
@@ -67,6 +68,8 @@ for x in range(len(epsilon)) :
 		rewardAvgPull=np.mean(rewardPull)
 		rewardEps.append(rewardAvgPull)
 		rewardEpsOptimal.append(float(optimalPull)*100/2000)
+	
+	# Plotting Reward Epsilon
 	plotFirst.plot(range(0,armPulls+1),rewardEps,col[x])
 	plotSecond.plot(range(2,armPulls+1),rewardEpsOptimal,col[x])
 
