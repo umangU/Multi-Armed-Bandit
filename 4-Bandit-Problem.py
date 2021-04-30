@@ -35,18 +35,18 @@ for x in range(len(epsilon)) :
 	# Assigning the initial random arm pulls
 	initialArm=np.random.normal(trueMeans,1)
 
-	#Declaring the variables to store rewards
+	# Declaring the variables to store rewards
 	rewardEps=[]
 	rewardEps.append(0)
 	rewardEps.append(np.mean(initialArm))
 	rewardEpsOptimal=[]
 
 	for y in range(2,armPulls+1) :
-		#Declaring variables to store rewards in the pulls per time-step
+		# Declaring variables to store rewards in the pulls per time-step
 		rewardPull=[]
-		#Storing the number of pulls of best arm in the present time step
+		# Storing the number of pulls of best arm in the present time step
 		optimalPull=0
-		#Looping through all the bandit problems
+		# Looping through all the bandit problems
 		for z in range(banditProblems) :
 
 			if random.random()<epsilon[x] :
@@ -54,7 +54,7 @@ for x in range(len(epsilon)) :
 			else :
 				i=np.argmax(Q[z])
 
-			#Condition to calculate percentage optimal action
+			# Condition to calculate percentage optimal action
 			if i==trueOptimal[z] :
 				optimalPull=optimalPull+1
 
@@ -69,7 +69,7 @@ for x in range(len(epsilon)) :
 	plotFirst.plot(range(0,armPulls+1),rewardEps,col[x])
 	plotSecond.plot(range(2,armPulls+1),rewardEpsOptimal,col[x])
 
-#Plotting the average reward and optimal reward against 4 arms steps
+# Plotting the average reward and optimal reward against 4 arms steps
 mpy.rc('text',usetex=True)
 plotFirst.title.set_text(r'$\epsilon$-greedy : Average Reward Vs Steps for 4 arms')
 plotFirst.set_ylabel('Average Reward')
@@ -79,6 +79,6 @@ plotSecond.title.set_text(r'$\epsilon$-greedy : $\%$ Optimal Action Vs Steps for
 plotSecond.set_ylabel(r'$\%$ Optimal Action')
 plotSecond.set_xlabel('Steps')
 plotSecond.set_ylim(0,100)
-#Adding legend
+# Adding legend
 plotSecond.legend((r"$\epsilon=$"+str(epsilon[0]),r"$\epsilon=$"+str(epsilon[1])),loc='best')
 mpy.show()
