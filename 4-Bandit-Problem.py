@@ -71,6 +71,7 @@ for x in range(len(epsilon)) :
 	
 	# Plotting Reward Epsilon
 	plotFirst.plot(range(0,armPulls+1),rewardEps,col[x])
+	# Plotting Reward Epsilon Optimal
 	plotSecond.plot(range(2,armPulls+1),rewardEpsOptimal,col[x])
 
 # Plotting the average reward and optimal reward against 4 arms steps
