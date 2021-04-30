@@ -40,7 +40,8 @@ for x in range(len(epsilon)) :
 	rewardEps.append(0)
 	rewardEps.append(np.mean(initialArm))
 	rewardEpsOptimal=[]
-
+	
+	# Looping through arm pulls
 	for y in range(2,armPulls+1) :
 		# Declaring variables to store rewards in the pulls per time-step
 		rewardPull=[]
